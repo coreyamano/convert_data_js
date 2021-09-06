@@ -86,6 +86,7 @@ console.log(wordFrequencies);
 
 //  7. Convert a hash into a flat array containing all the hash’s keys and values.
 //     For example, {"a" => 1, "b" => 2, "c" => 3, "d" => 4} becomes ["a", 1, "b", 2, "c", 3, "d", 4].
+
 var hash = { a: 1, b: 2, c: 3, d: 4 };
 var flattenedArray = [];
 Object.entries(hash).forEach(function ([key, value]) {
@@ -96,6 +97,7 @@ console.log(flattenedArray);
 
 //  8. Combine data from a hash with names and prices and an array of hashes with names, colors, and weights to make a new hash.
 //     For example, {"chair" => 75, "book" => 15} and [{name: "chair", color: "red", weight: 10}, {name: "book", color: "black", weight: 1}] becomes {"chair" => {price: 75, color: "red", weight: 10}, "book" => {price: 15, color: "black", weight: 1}}.
+
 var priceObject = { chair: 75, book: 15 };
 var items = [
   { name: "chair", color: "red", weight: 10 },
@@ -113,3 +115,35 @@ while (index < items.length) {
   index += 1;
 }
 console.log(combinedObject);
+
+//  9. Convert an array of hashes into a hash of arrays, using the author as keys and the titles as values.
+//     For example, [{author: "Jeff Smith", title: "Bone"}, {author: "George Orwell", title: "1984"}, {author: "Jeff Smith", title: "RASL"}] becomes {"Jeff Smith" => ["Bone", "RASL"], "George Orwell" => ["1984"]}.
+
+var books = [
+  { author: "Jeff Smith", title: "Bone" },
+  { author: "George Orwell", title: "1984" },
+  { author: "Jeff Smith", title: "RASL" },
+];
+var booksObject = {};
+var index = 0;
+while (index < books.length) {
+  var book = books[index];
+  var author = book.author;
+  var title = book.title;
+  if (booksObject[author] === undefined) {
+    booksObject[author] = [];
+  }
+  booksObject[author].push(title);
+  index += 1;
+}
+console.log(booksObject);
+
+// 10. Given a hash, create a new hash that has the keys and values switched.
+//     For example, {"a" => 1, "b" => 2, "c" => 3} becomes {1 => "a", 2 => "b", 3 => "c"}.
+
+var original = { a: 1, b: 2, c: 3 };
+var flipped = {};
+Object.entries(original).forEach(function ([key, value]) {
+  flipped[value] = key;
+});
+console.log(flipped);
